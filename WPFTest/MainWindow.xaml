@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Network" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Text="Open File" VerticalAlignment="Center" Margin="8"/>
+        <TextBox x:Name="txb_fileUri" Margin="14,8" VerticalContentAlignment="Center" Grid.Column="1"/>
+        <Button Content="Open" Click="openFile_Click" Padding="5" MinWidth="120" Grid.Column="2" Margin="0,8,8,8"/>
+        
+        <TextBlock Text="Write to File" VerticalAlignment="Center" Grid.Row="1" Margin="8"/>
+        <TextBox x:Name="txb_writeFile" Margin="14,8" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Write" Click="writeFile_Click" Padding="5" MinWidth="120" Grid.Row="1" Grid.Column="2" Margin="0,8,8,8"/>
+
+         <TextBox x:Name="txb_fileContent" TextWrapping="Wrap" Margin="8" Padding="5" Grid.ColumnSpan="5" Grid.Row="2" VerticalScrollBarVisibility="Visible"/>
     </Grid>
 </Window>
