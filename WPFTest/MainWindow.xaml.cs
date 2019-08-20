@@ -24,5 +24,15 @@ namespace WPFTest
         {
             InitializeComponent();
         }
-    }
+
+		private void openFile_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void writeFile_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+	}
 }
