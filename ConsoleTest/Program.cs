@@ -14,7 +14,7 @@ namespace ConsoleTest
 			Console.WriteLine(GetRateFromNbu());
 		}
 
-		public static string GetRateFromNbu(string currencyName = "USD", string date = "20190822")
+		public static string GetRateFromNbu(string currencyName = "USD", string date = "20190823")
 		{
 			var requestUri = new UriBuilder("https", "bank.gov.ua");
 			requestUri.Path = "NBUStatService/v1/statdirectory/exchange";
