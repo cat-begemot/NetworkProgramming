@@ -1,0 +1,33 @@
+﻿<Window x:Class="PortsScanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PortsScanner"
+        mc:Ignorable="d"
+        Title="PortsScanner" Height="550" Width="1000">
+    <ListView Name="listViewScanner" Margin="5">
+        <ListView.Resources>
+            <Style TargetType="{x:Type ListView}">
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListView.Resources>
+
+        <ListView.View>
+            <GridView>
+                <GridView.Columns>
+                    <GridViewColumn Header="Port ID" DisplayMemberBinding="{Binding Path=PortNumber}" Width="150"/>
+                    <GridViewColumn Header="Local Address" DisplayMemberBinding="{Binding Path=LocalAddress}" Width="250"/>
+                    <GridViewColumn Header="Remote Address" DisplayMemberBinding="{Binding Path=RemoteAddress}" Width="250"/>
+                    <GridViewColumn Header="State" DisplayMemberBinding="{Binding Path=State}" Width="250"/>
+                </GridView.Columns>
+            </GridView>
+        </ListView.View>
+    </ListView>
+</Window>
