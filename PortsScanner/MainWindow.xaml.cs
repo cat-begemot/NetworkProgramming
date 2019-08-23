@@ -37,14 +37,15 @@ namespace PortsScanner
 			IPEndPoint[] tcpEndPoints = ipGlobalProperties.GetActiveTcpListeners();
 			TcpConnectionInformation[] tcpConnections = ipGlobalProperties.GetActiveTcpConnections();
 
-			return tcpConnections.Select(tcpConnection =>
-			{
-				return new PortInfo(
+			return tcpConnections
+				.Select(tcpConnection => new PortInfo(
 					portNumber: tcpConnection.LocalEndPoint.Port,
-					localAddress: String.Format($"{tcpConnection.LocalEndPoint.Address}:{tcpConnection.LocalEndPoint.Port}"),
-					remoteAddress: String.Format($"{tcpConnection.RemoteEndPoint.Address}:{tcpConnection.RemoteEndPoint.Port}"),
-					state: tcpConnection.State.ToString());
-			}).ToList();
+					localAddress: $"{tcpConnection.LocalEndPoint.Address}:{tcpConnection.LocalEndPoint.Port}",
+					remoteAddress: $"{tcpConnection.RemoteEndPoint.Address}:{tcpConnection.RemoteEndPoint.Port}",
+					state: tcpConnection.State.ToString())
+				)
+				.OrderBy(portInfo => portInfo.State)
+				.ToList();
 		}
     }
 
