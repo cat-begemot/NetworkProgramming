@@ -19,7 +19,8 @@ namespace SocketServer
 
 			while (true)
 			{
-				Console.WriteLine($"Waiting for connection from client on the port: {ipEndPoint}");
+				Console.Write($"Waiting for connection on the port: ");
+				WriteInColor($"{ ipEndPoint}\n", ConsoleColor.DarkYellow);
 
 				Socket socketHandler = socketListener.Accept();
 
@@ -27,7 +28,8 @@ namespace SocketServer
 				int receivedMessageLength = socketHandler.Receive(receivedMessage);
 				var receivedString = Encoding.UTF8.GetString(receivedMessage, 0, receivedMessageLength);
 
-				Console.WriteLine($"Received message from client: {receivedString}");
+				Console.Write($"Received message from client: ");
+				WriteInColor($"{ receivedString}\n\n", ConsoleColor.Blue);
 
 				var repliedString = $"Confirm to receive message. Total {receivedMessageLength} symbol(s).";
 				var repliedBytes = Encoding.UTF8.GetBytes(repliedString);
@@ -35,7 +37,7 @@ namespace SocketServer
 
 				if (receivedString.IndexOf("<end>") > -1)
 				{
-					Console.WriteLine("Server closed the connection.");
+					WriteInColor("Server closed the connection.", ConsoleColor.Red);
 					break;
 				}
 
@@ -43,5 +45,13 @@ namespace SocketServer
 				socketHandler.Close();
 			}
         }
+
+		internal static void WriteInColor(string message, ConsoleColor color)
+		{
+			var previousColor = Console.ForegroundColor;
+			Console.ForegroundColor = color;
+			Console.Write(message);
+			Console.ForegroundColor = previousColor;
+		}
     }
 }
