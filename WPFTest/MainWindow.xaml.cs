@@ -25,31 +25,6 @@ namespace WPFTest
         public MainWindow()
         {
             InitializeComponent();
-			txb_fileUri.Text = "C:\\Users\\oholenko\\source\\repos\\NetworkProgramming\\WPFTest\\MainWindow.xaml.cs";
-
-		}
-
-		private void openFile_Click(object sender, RoutedEventArgs e)
-		{
-			var fileUri = txb_fileUri.Text;
-
-			var fileWebRequest = (FileWebRequest)WebRequest.Create(fileUri);
-
-			using (var streamReader = new StreamReader(fileWebRequest.GetResponse().GetResponseStream()))
-			{
-				txb_fileContent.Text = streamReader.ReadToEnd();
-			}
-		}
-
-		private void writeFile_Click(object sender, RoutedEventArgs e)
-		{
-			var fileWebRequest = (FileWebRequest)WebRequest.Create(txb_fileUri.Text);
-			fileWebRequest.Method = "PUT";
-
-			using (var streamWriter = new StreamWriter(fileWebRequest.GetRequestStream()))
-			{
-				streamWriter.Write(txb_fileContent.Text);
-			}
-		}
-	}
+        }
+    }
 }
